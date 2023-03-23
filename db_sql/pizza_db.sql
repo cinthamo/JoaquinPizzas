@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2023 at 02:20 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Mar 23, 2023 at 05:03 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `ingredients` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `cost_price` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ingredients`
@@ -56,7 +56,7 @@ INSERT INTO `ingredients` (`id`, `name`, `cost_price`) VALUES
 CREATE TABLE `pizza` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pizza`
@@ -74,26 +74,27 @@ INSERT INTO `pizza` (`id`, `name`) VALUES
 
 CREATE TABLE `pizza_ingredients` (
   `pizza_id` int(11) NOT NULL,
-  `ingredient_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ingredient_id` int(11) NOT NULL,
+  `position` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pizza_ingredients`
 --
 
-INSERT INTO `pizza_ingredients` (`pizza_id`, `ingredient_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5),
-(1, 6),
-(1, 7),
-(2, 1),
-(2, 8),
-(2, 6),
-(2, 2),
-(2, 7);
+INSERT INTO `pizza_ingredients` (`pizza_id`, `ingredient_id`, `position`) VALUES
+(1, 1, 1),
+(1, 2, 2),
+(1, 3, 3),
+(1, 4, 4),
+(1, 5, 5),
+(1, 6, 6),
+(1, 7, 7),
+(2, 1, 1),
+(2, 2, 2),
+(2, 6, 3),
+(2, 7, 4),
+(2, 8, 5);
 
 --
 -- Indexes for dumped tables
@@ -112,6 +113,12 @@ ALTER TABLE `pizza`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pizza_ingredients`
+--
+ALTER TABLE `pizza_ingredients`
+  ADD PRIMARY KEY (`pizza_id`,`ingredient_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -125,7 +132,7 @@ ALTER TABLE `ingredients`
 -- AUTO_INCREMENT for table `pizza`
 --
 ALTER TABLE `pizza`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
