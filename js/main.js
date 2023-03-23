@@ -67,6 +67,7 @@ function deleteIngredient(ingredientID, pizzaID, costPriceIngredient) {
     let total = document.getElementById("total").textContent;
     total = total - costPriceIngredient * 1.5;
     document.getElementById("total").textContent = total;
+    callPHP(`removeIngredient.php?pizza=${pizzaID}&ingredient=${ingredientID}`)
 }
 
 function changeBorder(element, isValid) {

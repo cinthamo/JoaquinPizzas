@@ -45,6 +45,10 @@
 			$position = $this->db->select($this->table_p_i, where: 'pizza_id='.$pizza_id)->num_rows + 1;
 			$this->db->insert($this->table_p_i, [ 'pizza_id' => $pizza_id, 'ingredient_id' => $ingredient_id, 'position' => $position ]);
 		}
+
+		public function remove_ingredient($pizza_id, $ingredient_id) {
+			$this->db->delete($this->table_p_i, 'pizza_id='.$pizza_id.' and ingredient_id='.$ingredient_id);
+		}
 	}
 
 ?>
