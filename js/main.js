@@ -1,11 +1,12 @@
-function callPHP() {
+function callPHP(name, process_response) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        // do something with the response from the PHP function
+            // do something with the response from the PHP function
+            process_response(this.responseText)
         }
     };
-    xhttp.open("GET", "myFunction.php", true);
+    xhttp.open("GET", "action/" + name, true);
     xhttp.send();
 }
 
@@ -27,6 +28,7 @@ function editPizzaName() {
         if (is_valid) {
             pizza_name.innerHTML = name;
             edit_pizza_name_btn.innerHTML = `<img src="images/edit.png" alt="buttonpng" width="30" height="30"/>`;
+            callPHP(`editPizzaName.php?id=${pizza_id}&name=${name}`, (s) => pizza_id = parseInt(s));
         }
     }
 }

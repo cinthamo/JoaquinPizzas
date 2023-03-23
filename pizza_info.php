@@ -13,6 +13,7 @@
 	$pizza_img = 'edit';
     $ingredients = $pizzas->ingredients($pizza_id);
   } else {
+	$pizza_id = 0;
     $pizza_html = "<input class='pizza_input w' type='text' value=''/>";
 	$pizza_img = 'done';
 	$ingredients = [];
@@ -36,6 +37,8 @@
     <script src="js/main.js"></script>
 
     <title> Joaquin Pizza's</title>
+
+	<script>let pizza_id = <?= $pizza_id ?>;</script>
   </head>
 
   <body>
