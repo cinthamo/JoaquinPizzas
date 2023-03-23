@@ -10,9 +10,12 @@
   if($pizza_id != null) {
     $pizza_name = $pizzas->pizza_name($pizza_id);
     $pizza_html = $pizza_name;
+	$pizza_img = 'edit';
     $ingredients = $pizzas->ingredients($pizza_id);
   } else {
     $pizza_html = "<input class='pizza_input w' type='text' value=''/>";
+	$pizza_img = 'done';
+	$ingredients = [];
   }
 
   //print_r($ingredients);
