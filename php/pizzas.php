@@ -40,6 +40,11 @@
     public function ingredients($id) {
       return $this->db->select($this->table_p_i, rows: 'ingredient_id', where: 'pizza_id='.$id);
     }
+
+		public function add_ingredient($pizza_id, $ingredient_id) {
+			$position = $this->db->select($this->table_p_i, where: 'pizza_id='.$pizza_id)->num_rows + 1;
+			$this->db->insert($this->table_p_i, [ 'pizza_id' => $pizza_id, 'ingredient_id' => $ingredient_id, 'position' => $position ]);
+		}
 	}
 
 ?>

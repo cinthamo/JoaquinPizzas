@@ -113,6 +113,8 @@ function addIngredient(pizzaID) {
             </td>
         `;
 
+        callPHP(`addIngredient.php?pizza=${pizzaID}&name=${name.value}&price=${price.value}`)
+
         name.value = "";
         price.value = "";
     }

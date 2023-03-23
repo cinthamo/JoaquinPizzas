@@ -23,7 +23,7 @@
 	  public function last($table, $field) {
 		$sql = "SELECT $field FROM `$table` ORDER BY $field DESC";
 
-		return $this->mysqli->query($sql);
+		return $this->mysqli->query($sql)->fetch_row()[0];
 	  }
 
 	  public function update($table, $para=array(), $id) {

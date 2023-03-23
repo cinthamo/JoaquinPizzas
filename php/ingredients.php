@@ -17,6 +17,10 @@
       return $this->db->delete($this->table_i, where: 'id='.$id);
     }
 
+		public function add($name, $price) {
+			$this->db->insert($this->table_i, [ 'name' => $name, 'cost_price' => $price ]);
+			return $this->db->last($this->table_i, 'id');
+		}
 	}
 
 ?>
