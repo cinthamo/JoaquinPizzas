@@ -1,18 +1,22 @@
 <?php
-	include("db.php");
+	require_once("db.php");
 
-	$db = $conn;
-	$tableName = "ingredients";
-	$columns = ['id', 'name', 'cost_price'];
-	$fetchData = fetch_data($db, $tableName, $columns);
+	class ingredients {
+		private $db;
+		private $table_i = "ingredients";
 
-	function fetch_data($db, $tableName, $columns){
-		if(empty($db)){
-			$msg= "Database connection error";
-		}elseif (empty($columns) || !is_array($columns)) {
-			$msg="columns Name must be defined in an indexed array";
-		}elseif(empty($tableName)){
-			$msg= "Table Name is empty";
+		public function __construct($db) {
+			$this->db = $db;
+		}
+
+    public function get($id) {
+      return $this->db->select($this->table_i, where: 'id='.$id)->fetch_object();
+    }
+
+    public function delete($id) {
+      return $this->db->delete($this->table_i, where: 'id='.$id);
+    }
+
 	}
 
 ?>

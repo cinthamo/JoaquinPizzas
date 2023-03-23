@@ -1,16 +1,28 @@
 <?php
-	include("db.php");
+	require_once("db.php");
 
 	class pizzas {
 		private $db;
-		private $table = "pizza";
+		private $table_p = "pizza";
+    private $table_p_i = "pizza_ingredients";
 
 		public function __construct($db) {
-      $this->db = $db;
-    }
+			$this->db = $db;
+		}
 
-    public function pizza_list() {
-  		return $this->db->select($this->table);
+    // Get all of the pizzas
+		public function pizza_list() {
+			return $this->db->select($this->table_p);
+		}
+
+    // Get one pizza
+		public function pizza_name($id) {
+			return $this->db->select($this->table_p, rows: 'name', where: 'id='.$id)->fetch_row()[0];
+		}
+
+    // Get pizza ingredients in id's
+    public function ingredients($id) {
+      return $this->db->select($this->table_p_i, rows: 'ingredient_id', where: 'pizza_id='.$id);
     }
 
 	}
