@@ -32,6 +32,10 @@
 			return $id;
 		}
 
+		public function delete($id) {
+			$this->db->delete($this->table_p, 'id='.$id);
+		}
+
     // Get pizza ingredients in id's
     public function ingredients($id) {
       return $this->db->select($this->table_p_i, rows: 'ingredient_id', where: 'pizza_id='.$id);

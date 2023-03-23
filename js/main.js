@@ -3,7 +3,8 @@ function callPHP(name, process_response) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             // do something with the response from the PHP function
-            process_response(this.responseText)
+            if (process_response)
+                process_response(this.responseText)
         }
     };
     xhttp.open("GET", "action/" + name, true);
@@ -12,6 +13,7 @@ function callPHP(name, process_response) {
 
 function removePizza(pizzaID) {
     document.getElementById("p-"+pizzaID).remove();
+    callPHP(`deletePizza.php?id=${pizzaID}`);
 }
 
 function editPizzaName() {
