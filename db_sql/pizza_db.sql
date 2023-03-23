@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 23, 2023 at 05:03 PM
+-- Generation Time: Mar 23, 2023 at 06:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -45,7 +45,18 @@ INSERT INTO `ingredients` (`id`, `name`, `cost_price`) VALUES
 (5, 'sliced onion', 0.5),
 (6, 'mozzarella cheese', 0.5),
 (7, 'oregano', 1),
-(8, 'bacon', 1);
+(8, 'bacon', 1),
+(26, 'a', 1),
+(27, 'a', 1),
+(28, 'b', 2),
+(29, 's', 2),
+(30, 'v', 1),
+(31, 's', 1),
+(32, 'b', 1),
+(33, 'c', 1),
+(34, 'a', 1),
+(35, 'a', 1),
+(36, 'c', 2);
 
 -- --------------------------------------------------------
 
@@ -126,13 +137,13 @@ ALTER TABLE `pizza_ingredients`
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `pizza`
 --
 ALTER TABLE `pizza`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
