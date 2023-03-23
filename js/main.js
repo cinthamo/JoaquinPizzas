@@ -40,11 +40,13 @@ function upIngredient(ingredientID, pizzaID) {
 
 function downIngredient(ingredientID, pizzaID) {
     const element = document.getElementById("row-"+ingredientID);
+    const newRowElement = document.getElementById("new-row")
     const parent = element.parentElement;
 
     const index = Array.from(parent.children).indexOf(element);
+    const newRowIndex = Array.from(parent.children).indexOf(newRowElement);
 
-    if(index != parent.childElementCount-2) {
+    if(index != newRowIndex - 1) {
         parent.removeChild(element);
         parent.insertBefore(element, parent.children[index+1]);
         
