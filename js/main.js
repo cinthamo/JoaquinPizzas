@@ -44,6 +44,8 @@ function upIngredient(ingredientID, pizzaID) {
     if(index != 0) {
         parent.removeChild(element);
         parent.insertBefore(element, parent.children[index-1]);
+        const position = index - 1
+        callPHP(`moveIngredient.php?pizza=${pizzaID}&ingredient=${ingredientID}&position=${position}`)
     }
 }
 
@@ -58,7 +60,8 @@ function downIngredient(ingredientID, pizzaID) {
     if(index != newRowIndex - 1) {
         parent.removeChild(element);
         parent.insertBefore(element, parent.children[index+1]);
-        
+        const position = index + 1
+        callPHP(`moveIngredient.php?pizza=${pizzaID}&ingredient=${ingredientID}&position=${position}`)
     }
 }
 
