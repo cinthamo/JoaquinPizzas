@@ -60,23 +60,21 @@ function deleteIngredient(ingredientID, pizzaID, costPriceIngredient) {
     document.getElementById("total").textContent = total;
 }
 
+function changeBorder(element, isValid) {
+    if (isValid)
+        element.style.border = "2px solid white";
+    else
+        element.style.border = "2px solid rgb(184, 36, 36, 0.8)";
+}
+
 function addIngredient(pizzaID) {
     const name = document.getElementById("new_ing_name"); 
     const price = document.getElementById("new_ing_price"); 
-    
-    if(name.value == "") {
-        name.style.border = "2px solid rgb(184, 36, 36, 0.8)";
-    } else {
-        name.style.border = "2px solid white";
-    }
+
+    changeBorder(name, name.value != "");
 
     const is_price_valid = new RegExp('^[0-9]+(\.[0-9]+)?$').test(price.value);
-
-    if(!is_price_valid) {
-        price.style.border = "2px solid rgb(184, 36, 36, 0.8)";
-    } else {
-        price.style.border = "2px solid white";
-    }
+    changeBorder(price, is_price_valid);
 
     if(name.value != "" && is_price_valid) {
         const ingredientID = 100;
