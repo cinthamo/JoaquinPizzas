@@ -21,8 +21,13 @@ function editPizzaName() {
         pizza_name.innerHTML = `<input class='pizza_input w' type='text' value='${pizza_name.textContent}'/>`;
         edit_pizza_name_btn.innerHTML = `<img src="images/done.png" alt="buttonpng" width="30" height="30">`;
     } else {
-        pizza_name.innerHTML = pizza_name.children[0].value;
-        edit_pizza_name_btn.innerHTML = `<img src="images/edit.png" alt="buttonpng" width="30" height="30"/>`;
+        const name = pizza_name.children[0].value
+        const is_valid = name != ""
+        changeBorder(pizza_name.children[0], is_valid)
+        if (is_valid) {
+            pizza_name.innerHTML = name;
+            edit_pizza_name_btn.innerHTML = `<img src="images/edit.png" alt="buttonpng" width="30" height="30"/>`;
+        }
     }
 }
 
