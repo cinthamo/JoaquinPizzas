@@ -17,7 +17,13 @@
 
 		  $sql = "INSERT INTO $table($table_columns) VALUES ('$table_value')";
 
-		  $result = $this->mysqli->query($sql);
+		  return $this->mysqli->query($sql);
+	  }
+
+	  public function last($table, $field) {
+		$sql = "SELECT $field FROM `$table` ORDER BY $field DESC";
+
+		return $this->mysqli->query($sql);
 	  }
 
 	  public function update($table, $para=array(), $id) {
@@ -28,20 +34,16 @@
 	    }
 
 	    $sql = "UPDATE  $table SET " . implode(',', $args);
-
 	    $sql .= " WHERE $id";
 
-	    $result = $this->mysqli->query($sql);
+	    return $this->mysqli->query($sql);
 	  }
 
 	  public function delete($table, $id) {
 	    $sql = "DELETE FROM $table";
 	    $sql .= " WHERE $id ";
-	    $sql;
-	    $result = $this->mysqli->query($sql);
+	    return $this->mysqli->query($sql);
 	  }
-
-	  public $sql;
 
 	  public function select($table, $rows="*", $where = null) {
 	    if ($where != null) {
@@ -49,9 +51,7 @@
 	    } else {
 	        $sql = "SELECT $rows FROM `$table`;";
 	    }
-
-		$this->sql = $this->mysqli->query($sql);
-	    return $this->sql;
+	    return $this->mysqli->query($sql);
 	  }
 
 	  public function __destruct() {
