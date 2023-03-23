@@ -62,11 +62,15 @@ function downIngredient(ingredientID, pizzaID) {
     }
 }
 
+function changeTotal(cost) {
+    let total = parseFloat(document.getElementById("total").textContent);
+    total = total + cost * 1.5;
+    document.getElementById("total").textContent = total.toFixed(2);
+}
+
 function deleteIngredient(ingredientID, pizzaID, costPriceIngredient) {
     document.getElementById("row-"+ingredientID).remove();
-    let total = document.getElementById("total").textContent;
-    total = total - costPriceIngredient * 1.5;
-    document.getElementById("total").textContent = total;
+    changeTotal(-costPriceIngredient);
     callPHP(`removeIngredient.php?pizza=${pizzaID}&ingredient=${ingredientID}`)
 }
 
@@ -114,6 +118,7 @@ function addIngredient(pizzaID) {
             </td>
         `;
 
+        changeTotal(parseInt(price.value));
         callPHP(`addIngredient.php?pizza=${pizzaID}&name=${name.value}&price=${price.value}`)
 
         name.value = "";
